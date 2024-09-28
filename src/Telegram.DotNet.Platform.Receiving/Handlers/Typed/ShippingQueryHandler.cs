@@ -1,9 +1,9 @@
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.Payments;
 
-namespace Telegram.DotNet.Platform.Receiving.Handling.Typed;
+namespace Telegram.DotNet.Platform.Receiving.Handlers.Typed;
 
 public abstract class ShippingQueryHandler : TypedUpdateHandler<ShippingQuery>
 {
-    public override UpdateType Type => UpdateType.ShippingQuery;
+    protected override UpdateType Type => UpdateType.ShippingQuery;
 }

@@ -1,9 +1,9 @@
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace Telegram.DotNet.Platform.Receiving.Handling.Typed;
+namespace Telegram.DotNet.Platform.Receiving.Handlers.Typed;
 
 public abstract class MyChatMemberHandler : TypedUpdateHandler<ChatMemberUpdated>
 {
-    public override UpdateType Type => UpdateType.MyChatMember;
+    protected override UpdateType Type => UpdateType.MyChatMember;
 }
