@@ -2,10 +2,12 @@ using System.Reflection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace Telegram.DotNet.Platform.Receiving.Handling;
+namespace Telegram.DotNet.Platform.Receiving.Handlers;
 
-public abstract class UpdateHandler : IUpdateHandler
+public abstract class TypedUpdateHandler : IUpdateHandler
 {
+    protected abstract UpdateType Type { get; }
+
     internal static readonly Dictionary<UpdateType, PropertyInfo> UpdateProperties = typeof(Update)
         .GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty)
         .ToDictionary(x => Enum.Parse<UpdateType>(x.Name), x => x);
@@ -13,11 +15,9 @@ public abstract class UpdateHandler : IUpdateHandler
     public abstract Task HandleAsync(Update update, CancellationToken token = default);
 }
 
-public abstract class TypedUpdateHandler<T> : UpdateHandler
+public abstract class TypedUpdateHandler<T> : TypedUpdateHandler
     where T : class
 {
-    public abstract UpdateType Type { get; }
-
     public sealed override Task HandleAsync(Update update, CancellationToken token = default)
     {
         if (Type != update.Type)

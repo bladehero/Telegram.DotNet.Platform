@@ -1,9 +1,9 @@
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace Telegram.DotNet.Platform.Receiving.Handling.Typed;
+namespace Telegram.DotNet.Platform.Receiving.Handlers.Typed;
 
 public abstract class ChannelPostHandler : TypedUpdateHandler<Message>
 {
-    public override UpdateType Type => UpdateType.ChannelPost;
+    protected override UpdateType Type => UpdateType.ChannelPost;
 }

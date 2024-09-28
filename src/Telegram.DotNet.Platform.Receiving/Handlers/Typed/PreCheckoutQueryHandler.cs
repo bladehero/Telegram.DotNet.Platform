@@ -1,9 +1,9 @@
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.Payments;
 
-namespace Telegram.DotNet.Platform.Receiving.Handling.Typed;
+namespace Telegram.DotNet.Platform.Receiving.Handlers.Typed;
 
 public abstract class PreCheckoutQueryHandler : TypedUpdateHandler<PreCheckoutQuery>
 {
-    public override UpdateType Type => UpdateType.PreCheckoutQuery;
+    protected override UpdateType Type => UpdateType.PreCheckoutQuery;
 }
